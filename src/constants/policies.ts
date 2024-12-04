@@ -3,7 +3,7 @@ import { contact_page } from "./policiesObjects/contact_pages";
 import { privacy_policies } from "./policiesObjects/privacy_policies";
 import { terms_of_use } from "./policiesObjects/terms_of_use";
 
-export const policies = {
+export const policy = {
   about: about,
   contact_page: contact_page,
   terms_of_use: terms_of_use,

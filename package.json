@@ -17,11 +17,12 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.1",
     "typescript": "^5.7.2",
-    "whois": "^2.14.2"
+    "whois-json": "^2.0.4"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
     "@types/node": "^22.10.1",
+    "@types/whois-json": "^2.0.4",
     "ts-node": "^10.9.2"
   }
 }
