@@ -2,8 +2,8 @@ const whois = require('whois-json');
 
 export async function getDomainAge(domain: string): Promise<Date | false> {
     try {
-        const info = await whois(domain);
-
+        const info = await whois(domain.split('//')[1]);
+        
         if (info.creationDate) {
             let creationDate = info.creationDate;
 
