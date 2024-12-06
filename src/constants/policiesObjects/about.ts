@@ -7,6 +7,7 @@ export const about = {
     "Who we are",
     "Quienes somos",
     "Sobre Nosotros",
+    "Sobre nós"
   ],
   valid: false,
 };
