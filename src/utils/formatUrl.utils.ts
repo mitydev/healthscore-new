@@ -1,6 +1,6 @@
-export function formatUrl(domain: string): string {
-  if(domain.startsWith("http://")) {
-    return "Error: 'http' not acceptable!"
+export function formatUrl(domain: string): string | { message: string } {
+  if (domain.startsWith("http://")) {
+    return { message: "Erro: 'http' não é aceitável!" };
   }
   if (!domain.startsWith("https://")) {
     return `https://${domain}`;

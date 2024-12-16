@@ -1,41 +1,32 @@
-import cheerio from 'cheerio';
+import cheerio from "cheerio";
+import { DetectPlataformReturn } from "../services/detectPlataform";
 
-interface PostData {
-  title: string | null;
-  summary: string | null;
-  categories: string | null;
-  date: string | null;
-  link: string | null;
-}
+export type PostData = {
+  title: string;
+  categories: number[];
+  date: string;
+  link: string;
+  author: string | undefined;
+};
 
-function extractPostData(post: cheerio.Root): PostData | null {
-  const titleElement = post('a[rel="bookmark"]');
-  const summaryElement = post('div.entry-excerpt');
-  const categoriesElement = post('li.meta-categories');
-  const timeElement = post('time.entry-date.published');
-
-  const title = titleElement.text().trim() || null;
-  const summary = summaryElement.text().trim() || null;
-  const link = titleElement.attr('href') || null;
-  const datetimeValue = timeElement.attr('content') || null;
-
-  let categories: string | null = null;
-  if (categoriesElement.length > 0) {
-    const anchors = categoriesElement.find('a');
-    categories = anchors
-      .map((_, anchor) => cheerio(anchor).text().trim())
-      .get()
-      .join(', ') || null;
+async function extractPostData(
+  platform: DetectPlataformReturn,
+  url: string,
+  categories: Map<number, string>,
+  author: Map<number, string>
+): Promise<PostData | null> {
+  //verify platform
+  //não preciso extractdata se vier do wordpress
+  // if (platform == "wordpress") {
+  //   return { title: "", categories: [], date: "", link: "", author: "" };
+  // }
+  if (platform == "blogger") {
+    // //blogger?
+    return { title: "", categories: [], date: "", link: "", author: "" };
   }
-
-  if (title && link) {
-    return {
-      title,
-      summary,
-      categories,
-      date: datetimeValue,
-      link,
-    };
+  if (platform == "unknown") {
+    // //scrapper?
+    return { title: "", categories: [], date: "", link: "", author: "" };
   }
 
   return null;

@@ -19,10 +19,6 @@ export async function formatReturn(
 ): Promise<DataItem[]> {
   const data: DataItem[] = [];
 
-  console.log("data pré tratamento: ", data);
-  console.log("policies: ", policies);
-  console.log("files: ", files);
-
   for (const key in policies) {
     if (Object.prototype.hasOwnProperty.call(policies, key)) {
       const value = policies[key];
@@ -36,8 +32,6 @@ export async function formatReturn(
       data.push({ page: file.desc, valid: file.valid });
     });
   }
-
-  console.log("data pós tratamento: ", data);
 
   return data;
 }
