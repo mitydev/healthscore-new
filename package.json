@@ -19,7 +19,9 @@
     "express": "^4.21.1",
     "typescript": "^5.7.2",
     "unidecode": "^1.1.0",
-    "whois-json": "^2.0.4"
+    "uuid": "^11.0.3",
+    "whois-json": "^2.0.4",
+    "winston": "^3.17.0"
   },
   "devDependencies": {
     "@types/amqplib": "^0.10.6",
@@ -27,6 +29,7 @@
     "@types/express": "^5.0.0",
     "@types/node": "^22.10.1",
     "@types/whois-json": "^2.0.4",
+    "@types/winston": "^2.4.4",
     "amqplib": "^0.10.5",
     "ts-node": "^10.9.2"
   }
