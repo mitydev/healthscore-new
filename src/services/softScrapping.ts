@@ -1,10 +1,12 @@
 import unidecode from "unidecode";
 import { getXmlUrls } from "./getXmlUrls";
 import { isUrlAccessible } from "./IsUrlAccessible";
-import { formatReturn } from "../utils/formatReturn";
+import { formatReturn } from "../utils/formatReturn.utils";
 import { detectPlatform } from "./detectPlataform";
 import { validateCategories } from "./validateCategories";
 import { PostMessage, validatePosts } from "./validatePosts";
+import { verifyDateInHome } from "../utils/verifyDateInHome.utils";
+import axios from "axios";
 
 export type Policy = {
   desc: string[];
@@ -29,6 +31,7 @@ async function softScrapping(
   const sitemapUrls = await getXmlUrls(sitemap);
   const { protocol, hostname } = new URL(sitemap);
   const domain = `${protocol}//${hostname}`;
+  const homepage = await axios.get(domain);
   const domainPlatform = await detectPlatform(domain);
   const categories = await validateCategories(domain, domainPlatform);
   let score = 0;
@@ -84,6 +87,7 @@ async function softScrapping(
   score += 10;
 
   const policiesReturn = await formatReturn(policies, files);
+  const isDateInHome = await verifyDateInHome(homepage.data);
   const postsMessage = await validatePosts(
     domainPlatform,
     score,
@@ -95,8 +99,7 @@ async function softScrapping(
      * 1-data de criação nos metadados
      * 2-autor nos metadados do post
      */
-    true,
-    true
+    isDateInHome
   );
   return [score, policiesReturn, categoriesMessage, postsMessage];
 }
