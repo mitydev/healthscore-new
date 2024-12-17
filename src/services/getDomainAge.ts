@@ -1,4 +1,4 @@
-import { logError } from "../utils/logging";
+import { logError } from "../utils/logging.utils";
 
 const whois = require("whois-json");
 
@@ -18,12 +18,9 @@ export async function getDomainAge(
     return { creation_date: creationDate };
   } catch (err) {
     logError(getDomainAge, {
-      newFile: true,
-      data: {
-        message: "Erro ao chamar a função Whois",
-        domain: domain,
-        return: err,
-      },
+      message: "Erro ao chamar a função Whois",
+      domain: domain,
+      return: err,
     });
     return {
       creation_date: "Erro: Não foi possível conseguir Data de criação!",

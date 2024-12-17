@@ -2,7 +2,7 @@ import axios, { AxiosError } from "axios";
 import { DetectPlataformReturn } from "./detectPlataform";
 import * as cheerio from "cheerio";
 import capitalizeFirstLetter from "../utils/capitalize.utils";
-import { logError } from "../utils/logging";
+import { logError } from "../utils/logging.utils";
 
 type responseCategory = {
   status: number;
@@ -72,12 +72,9 @@ export async function validateCategories(
     }
   } catch (err) {
     logError(validateCategories, {
-      newFile: true,
-      data: {
-        message: `Erro: Erro ao validar as categorias`,
-        domain: url,
-        return: err,
-      },
+      message: `Erro: Erro ao validar as categorias`,
+      domain: url,
+      return: err,
     });
   }
 

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { logError } from "../utils/logging";
+import { logError } from "../utils/logging.utils";
 
 export type DetectPlataformReturn = "wordpress" | "blogger" | "unknown";
 
@@ -20,12 +20,9 @@ export async function detectPlatform(
     }
   } catch (err) {
     logError(detectPlatform, {
-      newFile: true,
-      data: {
-        domain: url,
-        message: `Erro: Erro ao detectar a plataforma para o ${url}:`,
-        return: err,
-      },
+      domain: url,
+      message: `Erro: Erro ao detectar a plataforma para o ${url}:`,
+      return: err,
     });
   }
   return "unknown";

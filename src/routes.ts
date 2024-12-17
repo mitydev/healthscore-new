@@ -3,7 +3,7 @@ import { Request, Response } from "express";
 import { healthscore } from "./services/healthscore";
 import { getDomainAge } from "./services/getDomainAge";
 import { formatUrl } from "./utils/formatUrl.utils";
-import { logError } from "./utils/logging";
+import { logError } from "./utils/logging.utils";
 
 const router = Router();
 
@@ -18,12 +18,9 @@ router.get("/healthscore", async (req: Request, res: Response) => {
     await healthscore(domain, res);
   } catch (err) {
     logError(getDomainAge, {
-      newFile: true,
-      data: {
-        message: `Erro ao processar a requisição '/healthscore': ${err}`,
-        domain: domain,
-        return: err,
-      },
+      message: `Erro ao processar a requisição '/healthscore': ${err}`,
+      domain: domain,
+      return: err,
     });
     res.status(500).json({ message: "Erro interno do servidor" });
   }
@@ -41,12 +38,9 @@ router.get("/healthscore/age", async (req: Request, res: Response) => {
     await getDomainAge(domain);
   } catch (err) {
     logError(getDomainAge, {
-      newFile: true,
-      data: {
-        message: `Erro ao processar a requisição '/healthscore/age': ${err}`,
-        domain: domain,
-        return: err,
-      },
+      message: `Erro ao processar a requisição '/healthscore/age': ${err}`,
+      domain: domain,
+      return: err,
     });
     res.status(500).json({ message: "Erro interno do servidor" });
   }

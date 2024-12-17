@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
-import { logError } from "../utils/logging";
+import { logError } from "../utils/logging.utils";
 
 export async function getXmlUrls(sitemap: string): Promise<string[]> {
   try {
@@ -33,12 +33,9 @@ export async function getXmlUrls(sitemap: string): Promise<string[]> {
     return sitemapUrls;
   } catch (err) {
     logError(getXmlUrls, {
-      newFile: true,
-      data: {
-        message: `Error accessing ${sitemap}:`,
-        domain: sitemap,
-        return: err,
-      },
+      message: `Error accessing ${sitemap}:`,
+      domain: sitemap,
+      return: err,
     });
     return [];
   }

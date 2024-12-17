@@ -1,5 +1,5 @@
 import axios from "axios";
-import { logError } from "../utils/logging";
+import { logError } from "../utils/logging.utils";
 
 type getAuthorsResponse = {
   data: AuthorData[];
@@ -18,7 +18,9 @@ type AuthorData = {
   };
 };
 
-async function getAllWpAuthors(url: string): Promise<Map<number, string> | null> {
+async function getAllWpAuthors(
+  url: string
+): Promise<Map<number, string> | null> {
   const authorMap = new Map();
   try {
     const response: getAuthorsResponse = await axios.get(
@@ -30,13 +32,10 @@ async function getAllWpAuthors(url: string): Promise<Map<number, string> | null>
     });
   } catch (err) {
     logError(getAllWpAuthors, {
-      newFile: true,
-      data: {
-        message: "Falha no GET do Authors Wordpress",
-        domain: url,
-        return: err,
-      }
-    })
+      message: "Falha no GET do Authors Wordpress",
+      domain: url,
+      return: err,
+    });
     return null;
   }
 

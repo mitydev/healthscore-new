@@ -5,7 +5,7 @@ import { getDomainAge } from "./getDomainAge";
 import softScrapping from "./softScrapping";
 import { policyConstants } from "../constants/policies";
 import { filesConstants } from "../constants/files";
-import { logInfo } from "../utils/logging";
+import { logInfo } from "../utils/logging.utils";
 import { hardScrapping } from "./hardScrapping";
 
 export const healthscore = async (
@@ -38,13 +38,10 @@ export const healthscore = async (
     categoriesMessage = categoriesMessageVerified;
     postsMessage = postsMessageResult;
   } else {
-    logInfo(hardScrapping, {
-      newFile: false,
-      data: {
-        message: `O domínio ${URL} entraria pro Hard Scrapping`,
-        domain: URL,
-        return: {}
-      },
+  logInfo(hardScrapping, {
+      message: `O domínio ${URL} entraria pro Hard Scrapping`,
+      domain: URL,
+      return: {},
     });
   }
 
@@ -56,14 +53,4 @@ export const healthscore = async (
     posts: postsMessage,
     required_pages: policies,
   });
-
-  /**
-   * //TODO
-   * preciso realizar um tratamento de erro
-   */
-  // console.error(error);
-  // return res.json({
-  //   code: "error",
-  //   message: "Dominio possui proteção contra web scraping",
-  // });
 };

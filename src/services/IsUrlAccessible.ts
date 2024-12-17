@@ -1,6 +1,6 @@
 import axios, { AxiosError } from "axios";
 import * as dotenv from "dotenv";
-import { logError } from "../utils/logging";
+import { logError } from "../utils/logging.utils";
 
 dotenv.config();
 const USER_AGENT = process.env.USER_AGENT || "Mozilla/5.0";
@@ -25,12 +25,9 @@ export async function isUrlAccessible(url: string): Promise<boolean> {
       break;
     } catch (err) {
       logError(isUrlAccessible, {
-        newFile: true,
-        data: {
-          message: `Erro: Falha ao executar a função isUrlAccessible; Tentativa ${attempt}`,
-          domain: url,
-          return: err,
-        },
+        message: `Erro: Falha ao executar a função isUrlAccessible; Tentativa ${attempt}`,
+        domain: url,
+        return: err,
       });
 
       await new Promise((resolve) =>
