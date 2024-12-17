@@ -1,9 +1,9 @@
-import { DetectPlataformReturn } from "./detectPlataform";
-import getAllWpAuthors from "./getAllWpAuthors";
 import axios from "axios";
 import * as cheerio from "cheerio";
 import { getAllWpPosts } from "./getAllWpPostsAndPages";
 import { verifyAuthorInHome } from "./verifyAuthorInHome";
+import { DetectPlataformReturn } from "../utils/detectPlataform";
+import { getAllWpAuthors } from "./getAllWpAuthors";
 
 export type PostMessage = {
   post?: string;

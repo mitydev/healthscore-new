@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { Request, Response } from "express";
 import { healthscore } from "./services/healthscore";
-import { getDomainAge } from "./services/getDomainAge";
+import { getDomainAge } from "./services/utils/getDomainAge";
 import { formatUrl } from "./utils/formatUrl.utils";
 import { logError } from "./utils/logging.utils";
 

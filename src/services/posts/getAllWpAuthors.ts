@@ -1,5 +1,5 @@
 import axios from "axios";
-import { logError } from "../utils/logging.utils";
+import { logError } from "../../utils/logging.utils";
 
 type getAuthorsResponse = {
   data: AuthorData[];
@@ -18,7 +18,7 @@ type AuthorData = {
   };
 };
 
-async function getAllWpAuthors(
+export async function getAllWpAuthors(
   url: string
 ): Promise<Map<number, string> | null> {
   const authorMap = new Map();
@@ -41,5 +41,3 @@ async function getAllWpAuthors(
 
   return authorMap;
 }
-
-export default getAllWpAuthors;

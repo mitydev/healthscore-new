@@ -1,5 +1,5 @@
 import axios from "axios";
-import { logError } from "../utils/logging.utils";
+import { logError } from "../../utils/logging.utils";
 
 export type DetectPlataformReturn = "wordpress" | "blogger" | "unknown";
 

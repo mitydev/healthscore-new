@@ -1,4 +1,4 @@
-import { logError } from "../utils/logging.utils";
+import { logError } from "../../utils/logging.utils";
 
 const whois = require("whois-json");
 

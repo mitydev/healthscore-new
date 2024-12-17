@@ -1,8 +1,8 @@
-import axios, { AxiosError } from "axios";
-import { DetectPlataformReturn } from "./detectPlataform";
+import axios from "axios";
 import * as cheerio from "cheerio";
-import capitalizeFirstLetter from "../utils/capitalize.utils";
-import { logError } from "../utils/logging.utils";
+import { logError } from "../../utils/logging.utils";
+import capitalizeFirstLetter from "../../utils/capitalize.utils";
+import { DetectPlataformReturn } from "../utils/detectPlataform";
 
 type responseCategory = {
   status: number;

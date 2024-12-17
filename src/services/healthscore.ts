@@ -1,12 +1,10 @@
+import { policyConstants, filesConstants } from "../constants";
+import { formatUrl, logInfo } from "../utils";
+import hardScrapping from "./scrapping/hardScrapping";
+import softScrapping from "./scrapping/softScrapping";
+import { fetchSitemapUrl } from "./utils/fetchSitemapUrl";
+import { getDomainAge } from "./utils/getDomainAge";
 import { Response } from "express";
-import { formatUrl } from "../utils/formatUrl.utils";
-import { fetchSitemapUrl } from "./fetchSitemapUrl";
-import { getDomainAge } from "./getDomainAge";
-import softScrapping from "./softScrapping";
-import { policyConstants } from "../constants/policies";
-import { filesConstants } from "../constants/files";
-import { logInfo } from "../utils/logging.utils";
-import { hardScrapping } from "./hardScrapping";
 
 export const healthscore = async (
   domain: string,
@@ -38,7 +36,7 @@ export const healthscore = async (
     categoriesMessage = categoriesMessageVerified;
     postsMessage = postsMessageResult;
   } else {
-  logInfo(hardScrapping, {
+    logInfo(hardScrapping, {
       message: `O domínio ${URL} entraria pro Hard Scrapping`,
       domain: URL,
       return: {},

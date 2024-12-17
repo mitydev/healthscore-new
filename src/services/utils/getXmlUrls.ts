@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
-import { logError } from "../utils/logging.utils";
+import { logError } from "../../utils/logging.utils";
 
 export async function getXmlUrls(sitemap: string): Promise<string[]> {
   try {

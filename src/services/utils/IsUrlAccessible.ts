@@ -1,6 +1,6 @@
 import axios, { AxiosError } from "axios";
 import * as dotenv from "dotenv";
-import { logError } from "../utils/logging.utils";
+import { logError } from "../../utils/logging.utils";
 
 dotenv.config();
 const USER_AGENT = process.env.USER_AGENT || "Mozilla/5.0";

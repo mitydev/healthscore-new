@@ -1,5 +1,5 @@
 import cheerio from "cheerio";
-import { DetectPlataformReturn } from "../services/detectPlataform";
+import { DetectPlataformReturn } from "../services/utils/detectPlataform";
 
 export type PostData = {
   title: string;

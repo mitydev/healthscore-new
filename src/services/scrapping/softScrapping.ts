@@ -1,12 +1,12 @@
 import unidecode from "unidecode";
-import { getXmlUrls } from "./getXmlUrls";
-import { isUrlAccessible } from "./IsUrlAccessible";
-import { formatReturn } from "../utils/formatReturn.utils";
-import { detectPlatform } from "./detectPlataform";
-import { validateCategories } from "./validateCategories";
-import { PostMessage, validatePosts } from "./validatePosts";
-import { verifyDateInHome } from "../utils/verifyDateInHome.utils";
+import { getXmlUrls } from "../utils/getXmlUrls";
+import { isUrlAccessible } from "../utils/IsUrlAccessible";
+import { formatReturn } from "../../utils/formatReturn.utils";
+import { detectPlatform } from "../utils/detectPlataform";
+import { verifyDateInHome } from "../../utils/verifyDateInHome.utils";
 import axios from "axios";
+import { validateCategories } from "../posts/validateCategories";
+import { PostMessage, validatePosts } from "../posts/validatePosts";
 
 export type Policy = {
   desc: string[];
