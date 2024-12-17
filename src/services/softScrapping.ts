@@ -37,7 +37,6 @@ async function softScrapping(
   let score = 0;
 
   const validatedPolicies = new Set();
-
   const paths = sitemapUrls.map((url) => {
     const parsedUrl = new URL(url);
     return {
@@ -93,12 +92,6 @@ async function softScrapping(
     score,
     domain,
     categories.categoriesMap,
-    /**
-     * //TODO
-     * preciso verificar se na home tem:
-     * 1-data de criação nos metadados
-     * 2-autor nos metadados do post
-     */
     isDateInHome
   );
   return [score, policiesReturn, categoriesMessage, postsMessage];

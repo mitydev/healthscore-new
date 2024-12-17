@@ -70,6 +70,13 @@ export async function validateCategories(
         }
       }
     }
+    if (platform === "unknown") {
+      /**
+       * //TODO: 
+       * criar uma lógica para aplicar quando o site
+       * não for wordpress ou blogger 
+       */
+    }
   } catch (err) {
     logError(validateCategories, {
       message: `Erro: Erro ao validar as categorias`,

@@ -19,7 +19,6 @@ export async function validatePosts(
   dateInHome: boolean
 ): Promise<any> {
   const postMessage: PostMessage[] = [];
-  //TODO: trabalhar nos Posts do healthscore
   /**
    * //TODO:
    * verifique a plataforma
@@ -71,7 +70,7 @@ export async function validatePosts(
           errorsInPost.reasons.push("Sem metadado de Tempo!");
         if (curr.categories.length > 1)
           errorsInPost.reasons.push("Post com duas categorias ou mais!");
-        if (curr.categories[0] == 1)
+        if (!curr.categories.some((id) => categories.has(id)))
           errorsInPost.reasons.push("Post sem categoria!");
 
         if (errorsInPost.reasons.length > 0) {
