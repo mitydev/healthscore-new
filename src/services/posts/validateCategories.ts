@@ -71,11 +71,14 @@ export async function validateCategories(
       }
     }
     if (platform === "unknown") {
-      /**
-       * //TODO: 
-       * criar uma lógica para aplicar quando o site
-       * não for wordpress ou blogger 
-       */
+      categoriesMap.set(0, "Sem categoria");
+      categoryErrors.push("Categorias não encontradas!");
+      logError(validateCategories, {
+        domain: url,
+        message:
+          "Categorias não encontradas, entrou no IF do Platform 'Unknown'",
+        return: { categoriesMap, categoryErrors },
+      });
     }
   } catch (err) {
     logError(validateCategories, {
